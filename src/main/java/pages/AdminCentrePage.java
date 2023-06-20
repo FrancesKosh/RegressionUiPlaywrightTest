@@ -15,12 +15,12 @@ public class AdminCentrePage {
         {
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions()
                     .setHeadless(false).setSlowMo(50));
-                        Page page = browser.newPage();
+            Page page = browser.newPage();
             try {
-                page.locator("text=Example").click(new Locator.ClickOptions().setTimeout(50000));
+                page.locator("text=Example").click(new Locator.ClickOptions().setTimeout(100));
             } catch (TimeoutError e) {
-            System.out.println("Timeout!");
-        }
+                System.out.println("Timeout!");
+            }
             page.navigate("https://hub-staging.tissl.com/login");
             page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("example.png")));
             page.getByPlaceholder("Username").click();
@@ -38,6 +38,7 @@ public class AdminCentrePage {
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Edit")).nth(1).click();
             page.getByLabel("Enable 6 digit PIN codes").uncheck();
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Done")).click();
+          //  page.waitForLoadState();
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Back")).click();
             page.getByText("Manage sites").click();
             page.getByText("Aberdeen Stay Gin").click();
@@ -80,7 +81,7 @@ public class AdminCentrePage {
             page.getByPlaceholder("Schedule name").fill("BREAKFAST");
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Done")).click();
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Back")).click();
-//            page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Back")).click();
+            page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Back")).click();
             page.getByText("Order types").click();
             page.getByText("Bar", new Page.GetByTextOptions().setExact(true)).click();
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Edit")).click();

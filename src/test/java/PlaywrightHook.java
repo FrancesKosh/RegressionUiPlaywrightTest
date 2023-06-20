@@ -1,8 +1,6 @@
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.*;
 
-import java.nio.file.Path;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -49,7 +47,7 @@ public class PlaywrightHook {
             Page page = browser.newPage();
             page.navigate("https://playwright.dev");
             System.out.println(page.title());
-            page.screenshot(new Page.ScreenshotOptions().setPath(Path.of("example.png")));
+           // page.screenshot(new Page.ScreenshotOptions().setPath(Path.of("example.png")));
             assertEquals("Fast and reliable end-to-end testing for modern web apps | playwright", page.title());
 
         }
